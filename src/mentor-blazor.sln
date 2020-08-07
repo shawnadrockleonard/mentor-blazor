@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MentorApp", "MentorApp\MentorApp.csproj", "{43920095-F353-4716-AD71-081FF8979604}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43920095-F353-4716-AD71-081FF8979604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43920095-F353-4716-AD71-081FF8979604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43920095-F353-4716-AD71-081FF8979604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43920095-F353-4716-AD71-081FF8979604}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7C28B162-C6B4-4F55-9C68-263A0CB4A140}
+	EndGlobalSection
+EndGlobal

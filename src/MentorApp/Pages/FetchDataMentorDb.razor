@@ -1,0 +1,54 @@
+﻿@page "/fetchdatamentordb"
+
+@using MentorApp.Data
+@inject MentorService DbService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (messages?.Any() == false)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in messages?.ToList())
+            {
+                <tr>
+                    <td>@message.Test</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IList<HelloWorld> messages = new List<HelloWorld>();
+    private string messageText;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            messages = await DbService.GetHelloWorldsAsync();
+            if(!messages.Any())
+            {
+                messageText = "Failed to retreive table contents.";
+            }
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

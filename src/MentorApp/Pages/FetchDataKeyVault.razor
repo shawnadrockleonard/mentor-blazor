@@ -1,0 +1,26 @@
+﻿@page "/fetchdatakeyvault"
+
+@using MentorApp.Data
+@inject IKeyVaultHelper KeyVaultService
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (string.IsNullOrWhiteSpace(secretkey))
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>Your secret is => [@secretkey]</div>
+}
+
+@code {
+    private string secretkey;
+
+    protected override async Task OnInitializedAsync()
+    {
+        secretkey = await KeyVaultService.GetSecretAsync("testing");
+    }
+}
