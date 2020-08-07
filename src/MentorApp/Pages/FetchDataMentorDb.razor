@@ -3,9 +3,9 @@
 @using MentorApp.Data
 @inject MentorService DbService
 
-<h1>Weather forecast</h1>
+<h1>Query Mentor Database</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>This component demonstrates fetching data from Azure SQL Database.</p>
 
 @if (messages?.Any() == false)
 {
@@ -36,19 +36,10 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.CompletedTask;
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
+        messages = await DbService.GetHelloWorldsAsync();
+        if (!messages.Any())
         {
-            messages = await DbService.GetHelloWorldsAsync();
-            if(!messages.Any())
-            {
-                messageText = "Failed to retreive table contents.";
-            }
+            messageText = "Failed to retreive table contents.";
         }
-        await base.OnAfterRenderAsync(firstRender);
     }
 }

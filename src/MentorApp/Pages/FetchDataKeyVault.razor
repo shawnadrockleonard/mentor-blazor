@@ -3,9 +3,9 @@
 @using MentorApp.Data
 @inject IKeyVaultHelper KeyVaultService
 
-<h1>Weather forecast</h1>
+<h1>Az KeyVault</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>This component demonstrates fetching Secrets from Az KeyVault using Managed Identity.</p>
 
 @if (string.IsNullOrWhiteSpace(secretkey))
 {

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace MentorApp.Data
@@ -21,9 +22,7 @@ namespace MentorApp.Data
         public async Task<IList<HelloWorld>> GetHelloWorldsAsync()
         {
             Logger.LogDebug($"Querying for HelloWorld at {DateTime.UtcNow}");
-            
-            var list = new List<HelloWorld>();
-            
+            List<HelloWorld> list;
             try
             {
                 list = await Context.Helloworld.ToListAsync();
@@ -31,8 +30,9 @@ namespace MentorApp.Data
             catch (Exception ex)
             {
                 Logger.LogError(ex, $"Failed to retreive Helloworld with message {ex.Message}");
+                throw new HttpStatusCodeException((int)HttpStatusCode.BadRequest, $"Failed in GetHelloWorldsAsync", ex);
             }
-            
+
             return list;
         }
     }
